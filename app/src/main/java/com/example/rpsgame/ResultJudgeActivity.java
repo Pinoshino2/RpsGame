@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -23,6 +26,10 @@ public class ResultJudgeActivity extends AppCompatActivity {
     int id = 0;
 
     String result = "";
+    String myChoice_str = "";
+    String comChoice_str = "";
+
+    public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +43,32 @@ public class ResultJudgeActivity extends AppCompatActivity {
         switch (id){
             case R.id.gu:
                 myChoice = CHOICE_GU;
+                myChoice_str = "あなたはグー";
                 break;
             case R.id.choki:
                 myChoice = CHOICE_CYOKI;
+                myChoice_str = "あなたはチョキ";
                 break;
             case R.id.pa:
                 myChoice = CHOICE_PA;
+                myChoice_str = "あなたはパー";
                 break;
         }
         computer();
         judge();
         Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
+
+        TextView textView = new TextView(this);
+        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
+        textView.setTextSize(40);
+        textView.setGravity(Gravity.CENTER);
+        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        setContentView(textView, layoutParams);
+
+
+//        ViewGroup layout = (ViewGroup) findViewById(R.layout.activity_result_judge);
+//        layout.addView(textView);
     }
 
     private void computer() {
@@ -55,23 +77,26 @@ public class ResultJudgeActivity extends AppCompatActivity {
         switch (com_choice) {
             case 0:
                 comChoice = CHOICE_GU;
+                comChoice_str = "Aさんはグー";
                 break;
             case 1:
                 comChoice = CHOICE_CYOKI;
+                comChoice_str = "Aさんはチョキ";
                 break;
             case 2:
                 comChoice = CHOICE_PA;
+                comChoice_str = "Aさんはパー";
                 break;
         }
     }
 
     private void judge() {
         if (comChoice==myChoice) {
-            result = "あいこ";
+            result = "結果はあいこ！";
         } else if (comChoice-myChoice==1 || comChoice-myChoice==-2) {
-            result = "あなたの勝ち";
+            result = "あなたの勝ち！";
         } else if (comChoice-myChoice==-1 || comChoice-myChoice==2) {
-            result = "あなたの負け";
+            result = "あなたの負け！";
         }
     }
 
