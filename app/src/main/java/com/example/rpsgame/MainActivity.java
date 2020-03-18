@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +22,33 @@ public class MainActivity extends AppCompatActivity {
         Button gu = findViewById(R.id.gu);
         Button choki = findViewById(R.id.choki);
         Button pa = findViewById(R.id.pa);
+
+        gu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "グーをクリック", Toast.LENGTH_LONG).show();
+                onButtonTap(v);
+            }
+        });
+
+        choki.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonTap(v);
+            }
+        });
+
+        pa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onButtonTap(v);
+            }
+        });
     }
 
     public void onButtonTap(View view) {
         Intent intent = new Intent(this, ResultJudgeActivity.class);
-        intent.putExtra("MyChoice", view.getId());
+        intent.putExtra("MY_CHOICE", view.getId());
         startActivity(intent);
     }
 
