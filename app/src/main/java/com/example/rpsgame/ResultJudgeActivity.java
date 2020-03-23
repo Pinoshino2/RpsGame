@@ -46,6 +46,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
         id = intent.getIntExtra("MY_CHOICE", 0);
 
         Button retry = findViewById(R.id.button2);
+//        retry.setGravity(Gravity.CENTER);
 
         retry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +73,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
         computer();
         judge_and_stock_result();
         Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
+
+        // TextViewに紐付け
+        String sample = myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
+        TextView text = (TextView)findViewById(R.id.textResultView);
+        text.setText(sample);
+        text.setTextSize(30);
+        text.setGravity(Gravity.CENTER);
 
 //        TextView textView = new TextView(this);
 //        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
