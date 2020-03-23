@@ -110,15 +110,15 @@ public class ResultJudgeActivity extends AppCompatActivity {
         switch (com_choice) {
             case 0:
                 comChoice = CHOICE_GU;
-                comChoice_str = "Aさんはグー";
+                comChoice_str = "CPUはグー";
                 break;
             case 1:
                 comChoice = CHOICE_CYOKI;
-                comChoice_str = "Aさんはチョキ";
+                comChoice_str = "CPUはチョキ";
                 break;
             case 2:
                 comChoice = CHOICE_PA;
-                comChoice_str = "Aさんはパー";
+                comChoice_str = "CPUはパー";
                 break;
         }
     }
