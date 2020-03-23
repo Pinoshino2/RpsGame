@@ -79,6 +79,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
         text.setTextSize(30);
         text.setGravity(Gravity.CENTER);
 
+        // TextViewに紐付け
+        String battle_result = "対戦成績：" + win_num + "勝" + draw_num + "分" + lose_num + "敗";
+        TextView textBattle = (TextView)findViewById(R.id.textBattleView);
+        textBattle.setText(battle_result);
+        textBattle.setTextSize(20);
+        textBattle.setGravity(Gravity.CENTER);
+
 //        TextView textView = new TextView(this);
 //        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
 //        textView.setTextSize(40);
