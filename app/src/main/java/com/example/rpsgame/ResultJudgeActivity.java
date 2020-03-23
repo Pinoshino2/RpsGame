@@ -25,6 +25,10 @@ public class ResultJudgeActivity extends AppCompatActivity {
 
     int id = 0;
 
+    int win_num = 0;
+    int draw_num = 0;
+    int lose_num = 0;
+
     String result = "";
     String myChoice_str = "";
     String comChoice_str = "";
@@ -55,7 +59,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
                 break;
         }
         computer();
-        judge();
+        judge_and_stock_result();
         Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
 
         TextView textView = new TextView(this);
@@ -65,10 +69,6 @@ public class ResultJudgeActivity extends AppCompatActivity {
         ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         setContentView(textView, layoutParams);
-
-
-//        ViewGroup layout = (ViewGroup) findViewById(R.layout.activity_result_judge);
-//        layout.addView(textView);
     }
 
     private void computer() {
@@ -90,13 +90,16 @@ public class ResultJudgeActivity extends AppCompatActivity {
         }
     }
 
-    private void judge() {
+    private void judge_and_stock_result() {
         if (comChoice==myChoice) {
             result = "結果はあいこ！";
+            draw_num++;
         } else if (comChoice-myChoice==1 || comChoice-myChoice==-2) {
             result = "あなたの勝ち！";
+            win_num++;
         } else if (comChoice-myChoice==-1 || comChoice-myChoice==2) {
             result = "あなたの負け！";
+            lose_num++;
         }
     }
 
