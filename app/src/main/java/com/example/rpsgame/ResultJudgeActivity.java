@@ -123,6 +123,10 @@ public class ResultJudgeActivity extends AppCompatActivity {
         }
     }
 
+//    private void strong_computer() {
+//
+//    }
+
     private void judge_and_stock_result() {
         if (comChoice==myChoice) {
             result = "結果はあいこ！";
