@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -43,6 +45,15 @@ public class ResultJudgeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("MY_CHOICE", 0);
 
+        Button retry = findViewById(R.id.button2);
+
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRetryTap(v);
+            }
+        });
+
 //        自分の出し手を格納
         switch (id){
             case R.id.gu:
@@ -62,13 +73,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
         judge_and_stock_result();
         Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
 
-        TextView textView = new TextView(this);
-        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
-        textView.setTextSize(40);
-        textView.setGravity(Gravity.CENTER);
-        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        setContentView(textView, layoutParams);
+//        TextView textView = new TextView(this);
+//        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
+//        textView.setTextSize(40);
+//        textView.setGravity(Gravity.CENTER);
+//        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
+//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        setContentView(textView, layoutParams);
     }
 
     private void computer() {
@@ -101,6 +112,10 @@ public class ResultJudgeActivity extends AppCompatActivity {
             result = "あなたの負け！";
             lose_num++;
         }
+    }
+
+    public void onRetryTap(View view) {
+        finish();
     }
 
 
