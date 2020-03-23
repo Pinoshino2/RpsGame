@@ -3,6 +3,7 @@ package com.example.rpsgame;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,13 +28,15 @@ public class ResultJudgeActivity extends AppCompatActivity {
 
     int id = 0;
 
-    int win_num = 0;
-    int draw_num = 0;
-    int lose_num = 0;
+    int win_num;
+    int draw_num;
+    int lose_num;
 
     String result = "";
     String myChoice_str = "";
     String comChoice_str = "";
+
+    String data;
 
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
@@ -45,15 +48,9 @@ public class ResultJudgeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("MY_CHOICE", 0);
 
-        Button retry = findViewById(R.id.button2);
-//        retry.setGravity(Gravity.CENTER);
-
-        retry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onRetryTap(v);
-            }
-        });
+        win_num = intent.getIntExtra("WIN_NUM", 0);
+        draw_num = intent.getIntExtra("DRAW_NUM", 0);
+        lose_num = intent.getIntExtra("LOSE_NUM", 0);
 
 //        自分の出し手を格納
         switch (id){
@@ -73,6 +70,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
         computer();
         judge_and_stock_result();
         Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
+        Log.d("record_second",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
 
         // TextViewに紐付け
         String sample = myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
@@ -88,6 +86,15 @@ public class ResultJudgeActivity extends AppCompatActivity {
 //        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
 //                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 //        setContentView(textView, layoutParams);
+
+        Button retry = findViewById(R.id.button2);
+
+        retry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onRetryTap(v);
+            }
+        });
     }
 
     private void computer() {
@@ -123,6 +130,19 @@ public class ResultJudgeActivity extends AppCompatActivity {
     }
 
     public void onRetryTap(View view) {
+
+//        intentの作成
+        Intent intent = new Intent();
+
+//        intentへ添え字付で値を保持させる
+        intent.putExtra("WIN_NUM", win_num);
+        intent.putExtra("DRAW_NUM", draw_num);
+        intent.putExtra("LOSE_NUM", lose_num);
+
+//        返却したい結果ステータスをセットする
+        setResult( Activity.RESULT_OK, intent );
+
+//        アクティビティを終了させる
         finish();
     }
 
