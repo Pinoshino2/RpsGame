@@ -23,8 +23,12 @@
         android:id="@+id/textResultView"
         android:layout_width="320dp"
         android:layout_height="327dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:gravity="center"
         android:text="TextView"
-        tools:layout_editor_absoluteX="45dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="143dp" />
 
     <TextView
@@ -32,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="170dp"
-        android:layout_marginEnd="241dp"
+        android:layout_marginEnd="170dp"
         android:layout_marginBottom="42dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
