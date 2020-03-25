@@ -1,6 +1,5 @@
 package com.example.rpsgame;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -9,7 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,7 +18,6 @@ public class ResultJudgeActivity extends AppCompatActivity {
 
     int myChoice = 0;
     int comChoice = 0;
-//    int randChoice = 0;
 
     int CHOICE_GU = 0;
     int CHOICE_CYOKI = 1;
@@ -35,8 +32,6 @@ public class ResultJudgeActivity extends AppCompatActivity {
     String result = "";
     String myChoice_str = "";
     String comChoice_str = "";
-
-    String data;
 
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
@@ -86,14 +81,6 @@ public class ResultJudgeActivity extends AppCompatActivity {
         textBattle.setTextSize(20);
         textBattle.setGravity(Gravity.CENTER);
 
-//        TextView textView = new TextView(this);
-//        textView.setText(myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result);
-//        textView.setTextSize(40);
-//        textView.setGravity(Gravity.CENTER);
-//        ViewGroup.LayoutParams layoutParams = new ViewGroup.LayoutParams(
-//                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//        setContentView(textView, layoutParams);
-
         Button retry = findViewById(R.id.button2);
 
         retry.setOnClickListener(new View.OnClickListener() {
@@ -123,10 +110,6 @@ public class ResultJudgeActivity extends AppCompatActivity {
         }
     }
 
-//    private void strong_computer() {
-//
-//    }
-
     private void judge_and_stock_result() {
         if (comChoice==myChoice) {
             result = "結果はあいこ！";
@@ -153,7 +136,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
 //        返却したい結果ステータスをセットする
         setResult( Activity.RESULT_OK, intent );
 
-//        アクティビティを終了させる
+//        アクティビティを終了させる。（前のアクティビティへ戻る）
         finish();
     }
 
