@@ -13,8 +13,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
 //    @Override
-    String rid = "sample";
-    int num_value = 2017;
     int win_num = 0;
     int draw_num = 0;
     int lose_num = 0;
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonTap(View view) {
 //        遷移先のactivityを指定してintentを作成
         Intent intent = new Intent(this, ResultJudgeActivity.class);
-        Log.d("record_first",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
 //        intentに対して情報を付加する
         intent.putExtra("MY_CHOICE", view.getId());
         intent.putExtra("WIN_NUM", win_num);
@@ -80,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
             // 返却結果ステータスとの比較
             if( resultCode == Activity.RESULT_OK ){
-                Log.d("record_rerurn","ここ動いてますか？");
                 // 返却されてきたintentから値を取り出す
                 win_num = intent.getIntExtra("WIN_NUM", 0);
                 draw_num = intent.getIntExtra("DRAW_NUM", 0);

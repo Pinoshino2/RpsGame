@@ -64,8 +64,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
         }
         computer();
         judge_and_stock_result();
-        Log.d("result", "じゃんけん結果：" + result + "自分：" + myChoice + "相手：" + comChoice);
-        Log.d("record_second",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
+//        Log.d("record_second",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
 
         // TextViewに紐付け
         String sample = myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
