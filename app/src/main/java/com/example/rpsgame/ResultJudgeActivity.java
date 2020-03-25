@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -25,13 +24,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
 
     int id = 0;
 
-    int win_num;
-    int draw_num;
-    int lose_num;
+    int winNum;
+    int drawNum;
+    int loseNum;
 
     String result = "";
-    String myChoice_str = "";
-    String comChoice_str = "";
+    String myChoiceStr = "";
+    String comChoiceStr = "";
 
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
@@ -43,23 +42,23 @@ public class ResultJudgeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("MY_CHOICE", 0);
 
-        win_num = intent.getIntExtra("WIN_NUM", 0);
-        draw_num = intent.getIntExtra("DRAW_NUM", 0);
-        lose_num = intent.getIntExtra("LOSE_NUM", 0);
+        winNum = intent.getIntExtra("WIN_NUM", 0);
+        drawNum = intent.getIntExtra("DRAW_NUM", 0);
+        loseNum = intent.getIntExtra("LOSE_NUM", 0);
 
 //        自分の出し手を格納
         switch (id){
             case R.id.gu:
                 myChoice = CHOICE_GU;
-                myChoice_str = "あなたはグー";
+                myChoiceStr = "あなたはグー";
                 break;
             case R.id.choki:
                 myChoice = CHOICE_CYOKI;
-                myChoice_str = "あなたはチョキ";
+                myChoiceStr = "あなたはチョキ";
                 break;
             case R.id.pa:
                 myChoice = CHOICE_PA;
-                myChoice_str = "あなたはパー";
+                myChoiceStr = "あなたはパー";
                 break;
         }
         computer();
@@ -67,14 +66,14 @@ public class ResultJudgeActivity extends AppCompatActivity {
 //        Log.d("record_second",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
 
         // TextViewに紐付け
-        String sample = myChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + comChoice_str + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
+        String sample = myChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + comChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
         TextView text = (TextView)findViewById(R.id.textResultView);
         text.setText(sample);
         text.setTextSize(30);
         text.setGravity(Gravity.CENTER);
 
         // TextViewに紐付け
-        String battle_result = "対戦成績：" + win_num + "勝" + draw_num + "分" + lose_num + "敗";
+        String battle_result = "対戦成績：" + winNum + "勝" + drawNum + "分" + loseNum + "敗";
         TextView textBattle = (TextView)findViewById(R.id.textBattleView);
         textBattle.setText(battle_result);
         textBattle.setTextSize(20);
@@ -92,19 +91,19 @@ public class ResultJudgeActivity extends AppCompatActivity {
 
     private void computer() {
         Random rnd = new Random();
-        int com_choice = rnd.nextInt(3);
-        switch (com_choice) {
+        int comChoice = rnd.nextInt(3);
+        switch (comChoice) {
             case 0:
-                comChoice = CHOICE_GU;
-                comChoice_str = "CPUはグー";
+                this.comChoice = CHOICE_GU;
+                comChoiceStr = "CPUはグー";
                 break;
             case 1:
-                comChoice = CHOICE_CYOKI;
-                comChoice_str = "CPUはチョキ";
+                this.comChoice = CHOICE_CYOKI;
+                comChoiceStr = "CPUはチョキ";
                 break;
             case 2:
-                comChoice = CHOICE_PA;
-                comChoice_str = "CPUはパー";
+                this.comChoice = CHOICE_PA;
+                comChoiceStr = "CPUはパー";
                 break;
         }
     }
@@ -112,13 +111,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
     private void judge_and_stock_result() {
         if (comChoice==myChoice) {
             result = "結果はあいこ！";
-            draw_num++;
+            drawNum++;
         } else if (comChoice-myChoice==1 || comChoice-myChoice==-2) {
             result = "あなたの勝ち！";
-            win_num++;
+            winNum++;
         } else if (comChoice-myChoice==-1 || comChoice-myChoice==2) {
             result = "あなたの負け！";
-            lose_num++;
+            loseNum++;
         }
     }
 
@@ -128,9 +127,9 @@ public class ResultJudgeActivity extends AppCompatActivity {
         Intent intent = new Intent();
 
 //        intentへ添え字付で値を保持させる
-        intent.putExtra("WIN_NUM", win_num);
-        intent.putExtra("DRAW_NUM", draw_num);
-        intent.putExtra("LOSE_NUM", lose_num);
+        intent.putExtra("WIN_NUM", winNum);
+        intent.putExtra("DRAW_NUM", drawNum);
+        intent.putExtra("LOSE_NUM", loseNum);
 
 //        返却したい結果ステータスをセットする
         setResult( Activity.RESULT_OK, intent );

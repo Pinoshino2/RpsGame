@@ -5,18 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-//    @Override
-    int win_num = 0;
-    int draw_num = 0;
-    int lose_num = 0;
+    int winNum = 0;
+    int drawNum = 0;
+    int loseNum = 0;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -31,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
         gu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(MainActivity.this, "グーをクリック", Toast.LENGTH_LONG).show();
                 onButtonTap(v);
             }
         });
@@ -57,30 +54,31 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ResultJudgeActivity.class);
 //        intentに対して情報を付加する
         intent.putExtra("MY_CHOICE", view.getId());
-        intent.putExtra("WIN_NUM", win_num);
-        intent.putExtra("DRAW_NUM", draw_num);
-        intent.putExtra("LOSE_NUM", lose_num);
+        intent.putExtra("WIN_NUM", winNum);
+        intent.putExtra("DRAW_NUM", drawNum);
+        intent.putExtra("LOSE_NUM", loseNum);
 
 //        遷移先から返却されてくる際の識別コード
         int requestCode = 1001;
 
 //        返却値を考慮したActivityの起動
         startActivityForResult(intent, requestCode);
-//        通常のActivityの起動
+
+//        通常のActivityの起動は以下
 //        startActivity(intent);
     }
 
-    public void onActivityResult( int requestCode, int resultCode, Intent intent )
-    {
+    public void onActivityResult( int requestCode, int resultCode, Intent intent ) {
         // startActivityForResult()の際に指定した識別コードとの比較
-        if( requestCode == 1001 ){
+        super.onActivityResult(requestCode, resultCode, intent);
+        if (requestCode == 1001) {
 
             // 返却結果ステータスとの比較
-            if( resultCode == Activity.RESULT_OK ){
+            if (resultCode == Activity.RESULT_OK) {
                 // 返却されてきたintentから値を取り出す
-                win_num = intent.getIntExtra("WIN_NUM", 0);
-                draw_num = intent.getIntExtra("DRAW_NUM", 0);
-                lose_num = intent.getIntExtra("LOSE_NUM", 0);
+                winNum = intent.getIntExtra("WIN_NUM", 0);
+                drawNum = intent.getIntExtra("DRAW_NUM", 0);
+                loseNum = intent.getIntExtra("LOSE_NUM", 0);
             }
         }
     }

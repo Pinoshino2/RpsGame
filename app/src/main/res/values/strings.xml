@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">ジャンケンゲーム</string>
+    <string name="choki">チョキ</string>
+    <string name="pa">パー</string>
+    <string name="gu">グー</string>
+    <string name="your_hand">あなたの\n出し手は？</string>
+    <string name="cpu_text">CPUと\nジャンケンをします。</string>
 </resources>

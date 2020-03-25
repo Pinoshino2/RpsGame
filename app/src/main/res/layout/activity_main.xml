@@ -25,21 +25,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="グー" />
+            android:text="@string/gu" />
 
         <Button
             android:id="@+id/choki"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="チョキ" />
+            android:text="@string/choki" />
 
         <Button
             android:id="@+id/pa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="パー" />
+            android:text="@string/pa" />
 
     </LinearLayout>
 
@@ -50,7 +50,7 @@
         android:layout_marginStart="170dp"
         android:layout_marginEnd="170dp"
         android:layout_marginBottom="24dp"
-        android:text="あなたの\n出し手は？"
+        android:text="@string/your_hand"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -65,7 +65,7 @@
         android:layout_marginStart="176dp"
         android:layout_marginEnd="176dp"
         android:layout_marginBottom="125dp"
-        android:text="CPUと\nジャンケンをします。"
+        android:text="@string/cpu_text"
         android:textAlignment="center"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
