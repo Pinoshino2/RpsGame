@@ -47,7 +47,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
         loseNum = intent.getIntExtra("LOSE_NUM", 0);
 
 //        自分の出し手を格納
-        switch (id){
+        switch (id) {
             case R.id.gu:
                 myChoice = CHOICE_GU;
                 myChoiceStr = "あなたはグー";
@@ -66,19 +66,18 @@ public class ResultJudgeActivity extends AppCompatActivity {
 //        Log.d("record_second",win_num + "勝：" + draw_num + "分：" + lose_num + "敗");
 
         // TextViewに紐付け
-        String sample = myChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + comChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + LINE_SEPARATOR + result;
-        TextView text = (TextView)findViewById(R.id.textResultView);
+        String sample = myChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + comChoiceStr + LINE_SEPARATOR + LINE_SEPARATOR + result;
+        TextView text = (TextView) findViewById(R.id.textResultView);
         text.setText(sample);
         text.setTextSize(30);
         text.setGravity(Gravity.CENTER);
 
         // TextViewに紐付け
         String battle_result = "対戦成績：" + winNum + "勝" + drawNum + "分" + loseNum + "敗";
-        TextView textBattle = (TextView)findViewById(R.id.textBattleView);
+        TextView textBattle = (TextView) findViewById(R.id.textBattleView);
         textBattle.setText(battle_result);
         textBattle.setTextSize(20);
         textBattle.setGravity(Gravity.CENTER);
-
         Button retry = findViewById(R.id.button2);
 
         retry.setOnClickListener(new View.OnClickListener() {
@@ -109,13 +108,13 @@ public class ResultJudgeActivity extends AppCompatActivity {
     }
 
     private void judge_and_stock_result() {
-        if (comChoice==myChoice) {
+        if (comChoice == myChoice) {
             result = "結果はあいこ！";
             drawNum++;
-        } else if (comChoice-myChoice==1 || comChoice-myChoice==-2) {
+        } else if (comChoice - myChoice == 1 || comChoice - myChoice == -2) {
             result = "あなたの勝ち！";
             winNum++;
-        } else if (comChoice-myChoice==-1 || comChoice-myChoice==2) {
+        } else if (comChoice - myChoice == -1 || comChoice - myChoice == 2) {
             result = "あなたの負け！";
             loseNum++;
         }
@@ -132,7 +131,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
         intent.putExtra("LOSE_NUM", loseNum);
 
 //        返却したい結果ステータスをセットする
-        setResult( Activity.RESULT_OK, intent );
+        setResult(Activity.RESULT_OK, intent);
 
 //        アクティビティを終了させる。（前のアクティビティへ戻る）
         finish();

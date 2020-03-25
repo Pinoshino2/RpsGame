@@ -5,4 +5,6 @@
     <string name="gu">グー</string>
     <string name="your_hand">あなたの\n出し手は？</string>
     <string name="cpu_text">CPUと\nジャンケンをします。</string>
+    <string name="retry">Retry</string>
+    <string name="text_result_view">TextView</string>
 </resources>

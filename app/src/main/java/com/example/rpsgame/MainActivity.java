@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
 //        この部分のコードの意味：
 //        IDによってビューオブジェクトを見つけて、ボタンオブジェクトに代入している。
-//        まだタップして値を取得する処理は書いていない。
         Button gu = findViewById(R.id.gu);
         Button choki = findViewById(R.id.choki);
         Button pa = findViewById(R.id.pa);
@@ -68,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
     }
 
-    public void onActivityResult( int requestCode, int resultCode, Intent intent ) {
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         // startActivityForResult()の際に指定した識別コードとの比較
         super.onActivityResult(requestCode, resultCode, intent);
         if (requestCode == 1001) {
