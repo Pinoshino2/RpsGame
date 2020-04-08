@@ -16,12 +16,12 @@ public class MainActivity extends AppCompatActivity {
     int win_num = 0;
     int lose_num = 0;
     int hoge = 2;
+    int piyo = 20;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        この部分のコードの意味：
 //        IDによってビューオブジェクトを見つけて、ボタンオブジェクトに代入している。
 //        まだタップして値を取得する処理は書いていない。
         Button gu = findViewById(R.id.gu);
