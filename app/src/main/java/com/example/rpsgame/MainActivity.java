@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
 //    @Override
     int win_num = 0;
-    int draw_num = 0;
     int lose_num = 0;
+    int hoge = 2;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
