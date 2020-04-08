@@ -22,6 +22,7 @@ public class ResultJudgeActivity extends AppCompatActivity {
     int CHOICE_GU = 0;
     int CHOICE_CYOKI = 1;
     int CHOICE_PA = 2;
+    int CHOICE_PO = 3;
 
     int id = 0;
 
